@@ -11,6 +11,47 @@
         <h1>いぬPの生活ブログ</h1>
         <p>日々の記録をここに残していくZO。</p>
     </header>
+    <!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>チャット機能</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    .chat-container { max-width: 400px; margin: 0 auto; padding: 1em; border: 1px solid #ccc; border-radius: 8px; }
+    .chat-log { border: 1px solid #ddd; padding: 10px; height: 300px; overflow-y: scroll; margin-bottom: 10px; }
+    .chat-input { width: calc(100% - 10px); padding: 8px; }
+    .chat-submit { padding: 8px 10px; }
+  </style>
+</head>
+<body>
+
+<div class="chat-container">
+  <div class="chat-log" id="chatLog"></div>
+  <input type="text" id="chatInput" class="chat-input" placeholder="メッセージを入力...">
+  <button id="chatSubmit" class="chat-submit">送信</button>
+</div>
+
+<script>
+  const chatLog = document.getElementById('chatLog');
+  const chatInput = document.getElementById('chatInput');
+  const chatSubmit = document.getElementById('chatSubmit');
+
+  chatSubmit.addEventListener('click', () => {
+    const userMessage = chatInput.value;
+    if (userMessage) {
+      const newMessage = document.createElement('div');
+      newMessage.textContent = `ユーザー: ${userMessage}`;
+      chatLog.appendChild(newMessage);
+      chatInput.value = '';
+    }
+  });
+</script>
+
+</body>
+</html>
+
     <div id="chatbox">
   <div id="messages"></div>
   <input type="text" id="userInput" placeholder="Type a message">
