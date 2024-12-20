@@ -1,61 +1,7 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js"></script>
-    <script>
-    const firebaseConfig = {
-        apiKey: "YOUR_API_KEY",
-        authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-        databaseURL: "https://YOUR_PROJECT_ID.firebaseio.com",
-        projectId: "YOUR_PROJECT_ID",
-        storageBucket: "YOUR_PROJECT_ID.appspot.com",
-        messagingSenderId: "YOUR_SENDER_ID",
-        appId: "YOUR_APP_ID"
-    };
-<script>
-    const socket = new WebSocket('ws://localhost:8080');
-
-    // 接続が確立したとき
-    socket.addEventListener('open', () => {
-        console.log('Connected to server');
-        socket.send('Hello Server!');
-    });
-
-    // メッセージを受信したとき
-    socket.addEventListener('message', (event) => {
-        console.log('Message from server:', event.data);
-    });
-
-    // メッセージを送信する関数
-    function sendMessage(msg) {
-        socket.send(msg);
-    }
-</script>
-
-        
-    const app = firebase.initializeApp(firebaseConfig);
-    const db = firebase.database();
-
-    const messagesRef = db.ref('messages');
-    const form = document.querySelector('form');
-    const input = document.querySelector('input');
-
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const message = input.value;
-        messagesRef.push({ text: message }); // データベースに送信
-        input.value = '';
-    });
-
-    messagesRef.on('child_added', (snapshot) => {
-        const message = snapshot.val().text;
-        const div = document.createElement('div');
-        div.textContent = message;
-        document.body.appendChild(div);
-    });
-</script>
-
     <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
 <script>
     const socket = io('http://localhost:3000');
