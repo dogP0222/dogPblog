@@ -1,3 +1,18 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js"></script>
+    <script>
+    const firebaseConfig = {
+        apiKey: "YOUR_API_KEY",
+        authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+        databaseURL: "https://YOUR_PROJECT_ID.firebaseio.com",
+        projectId: "YOUR_PROJECT_ID",
+        storageBucket: "YOUR_PROJECT_ID.appspot.com",
+        messagingSenderId: "YOUR_SENDER_ID",
+        appId: "YOUR_APP_ID"
+    };
 <script>
     const socket = new WebSocket('ws://localhost:8080');
 
@@ -18,33 +33,7 @@
     }
 </script>
 
-const WebSocket = require('ws');
-
-const server = new WebSocket.Server({ port: 8080 });
-
-server.on('connection', (socket) => {
-    console.log('Client connected');
-    socket.on('message', (message) => {
-        console.log(`Received: ${message}`);
-        socket.send(`Echo: ${message}`);
-    });
-});
-
-<!DOCTYPE html>
-<html lang="ja">
-<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js"></script>
-<script>
-    const firebaseConfig = {
-        apiKey: "YOUR_API_KEY",
-        authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-        databaseURL: "https://YOUR_PROJECT_ID.firebaseio.com",
-        projectId: "YOUR_PROJECT_ID",
-        storageBucket: "YOUR_PROJECT_ID.appspot.com",
-        messagingSenderId: "YOUR_SENDER_ID",
-        appId: "YOUR_APP_ID"
-    };
-
+        
     const app = firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
 
