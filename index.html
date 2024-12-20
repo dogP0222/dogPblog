@@ -1,3 +1,23 @@
+<script>
+    const socket = new WebSocket('ws://localhost:8080');
+
+    // 接続が確立したとき
+    socket.addEventListener('open', () => {
+        console.log('Connected to server');
+        socket.send('Hello Server!');
+    });
+
+    // メッセージを受信したとき
+    socket.addEventListener('message', (event) => {
+        console.log('Message from server:', event.data);
+    });
+
+    // メッセージを送信する関数
+    function sendMessage(msg) {
+        socket.send(msg);
+    }
+</script>
+
 const WebSocket = require('ws');
 
 const server = new WebSocket.Server({ port: 8080 });
