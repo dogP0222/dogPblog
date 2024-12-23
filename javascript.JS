@@ -1,3 +1,10 @@
+{
+  "rules": {
+    ".read": true,
+    ".write": true
+  }
+}
+
 <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
 <script>
     const socket = io('http://localhost:3000');
